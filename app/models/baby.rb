@@ -7,55 +7,10 @@ class Baby < ActiveRecord::Base
   	end
 
 	validate do |babyname|
-    	babyname.errors.add_to_base("Please provide a name") if babyname.name.blank?
-    	babyname.errors.add_to_base("Please select at least one region") if babyname.babyregions.empty?
-    	babyname.errors.add_to_base("Please select at least one language") if babyname.babylangs.empty?
-    
-	    # let's find duplicates of regions and delete one of the duplicates without warning
-	    num = 1
-	    babyname.babyregions.each do |r1|
-	          # avoiding same comparisons by specifying the range [start..end]
-	      babyname.babyregions[num..babyname.babyregions.size].each do |r2|
-	            if r1.region_id == r2.region_id
-	              #babyname.errors.add_to_base("Duplicate regions: " + Region.find(r1.region_id).name)
-	              babyname.babyregions.delete(r2)
-	            end # end of if
-	          end # end of inner loop
-	          num = num + 1
-	      end # end of outer loop
-	      
-	      # let's find duplicates of languages and warn the user
-	      num = 1
-	      bgender = ''
-	      babyname.babylangs.each do |l1|
-	          # avoiding same comparisons by specifying the range [start..end]
-	          babyname.babylangs[num..babyname.babylangs.size].each do |l2|
-	            if l1.language_id == l2.language_id
-	              #babyname.babylangs.delete(l2)
-	              babyname.errors.add_to_base("Duplicate language - " + Language.find(l1.language_id).name + " - could not be saved") 
-	            end # end of if
-	          end # end of inner loop
-	          num = num + 1
-	          # Assigning sex
-	          if l1.gender == 'Unisex' or bgender == 'Unisex'
-	            bgender = 'Unisex'
-	          elsif l1.gender == 'Boy'
-	            if bgender == 'Girl'
-	              bgender = 'Unisex'
-	            else
-	              bgender = 'Boy'
-	            end
-	          elsif l1.gender == 'Girl'
-	            if bgender == 'Boy'
-	              bgender = 'Unisex'
-	            else
-	              bgender = 'Girl'
-	            end
-	          end # end of assigning sex
-	      end # end of outer loop
-	      babyname.lang_count = babyname.babylangs.size
-	      babyname.gender = bgender
-	  end
+	    	babyname.errors[:base] << "Please provide a name" if babyname.name.blank?
+	    	babyname.errors[:base] << "Please select at least one region" if babyname.babyregions.empty?
+	    	babyname.errors[:base] << "Please select at least one language" if babyname.babylangs.empty?
+	end
 	  
 	  validates_uniqueness_of   :name, :case_sensitive => false, :message =>"already exists"
 	  has_many :celebs, :dependent => :destroy
