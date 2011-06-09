@@ -17,7 +17,6 @@ class Babyregion < ActiveRecord::Base
   # set method
   def region_name=(region)
     puts "REGION: " + region.to_s
-    #puts "Name: " + name.to_s
     puts "Region.find_by_name(region): " + Region.find_by_name(region).inspect
     self.region = Region.find_or_create_by_name(region) unless region.blank? #in the tutorial, 'region' was 'name'
   end
