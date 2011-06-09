@@ -18,7 +18,7 @@
 
 <% @babies.each do |babyname|  %>
   <tr>
-    <td align="left"><%= link_to (babyname.name, :controller => "babies", :action => "show", :id => babyname.id) %></td>
+    <td align="left"><%= link_to babyname.name, :controller => "babies", :action => "show", :id => babyname.id %></td>
 	
 	<td align="center">
 		<% if babyname.gender == 'Boy' %>
