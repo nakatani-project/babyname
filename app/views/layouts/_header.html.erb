@@ -5,12 +5,12 @@
 <header>
 		<nav class="round">
  			<ul>
- 				<li><%= link_to ("home", :controller => "pages", :action => "home") %></li>
+ 				<li><%= link_to "home", :controller => "pages", :action => "home" %></li>
  				<li>
- 					<%= link_to(image_tag("flags/gb.png", :title => "English"), :controller => "pages", :action => "translate", :locale => "en") %><%= link_to("English", :controller => "pages", :action => "translate", :locale => "en") %>
+ 					<%= link_to image_tag("flags/gb.png", :title => "English"), :controller => "pages", :action => "translate", :locale => "en" %><%= link_to "English", :controller => "pages", :action => "translate", :locale => "en" %>
  				</li>
  				<li>
- 					 <%= link_to(image_tag("flags/jp.png", :title => "日本語"), :controller => "pages", :action => "translate", :locale => "jp") %><%= link_to("日本語", :controller => "pages", :action => "translate", :locale => "jp") %>
+ 					 <%= link_to image_tag("flags/jp.png", :title => "日本語"), :controller => "pages", :action => "translate", :locale => "jp" %><%= link_to "日本語", :controller => "pages", :action => "translate", :locale => "jp" %>
  				</li>
  				<li>
  					<a name="fb_share" type="button" share_url="http://www.mixedbabyname.com/" href="http://www.facebook.com/sharer.php">Share this website</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script> 
