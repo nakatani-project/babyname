@@ -1,0 +1,13 @@
+<!-- the file name has to be _celebnames_fields -->
+<div class="fields">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<%= f.label :originlang_id, "#{t 'babyname.origin'}:" %>
+	<%= f.select(:originlang_id, Originlang.all.collect {|p| [ p.name, p.id ] }.sort, {:include_blank => "#{t 'babyname.select'}"}) %>
+	<%= link_to_remove_fields "#{t 'babyname.remove'}", f %>
+
+	<br />
+	
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<%= f.label :name, "#{t 'babyname.old'}:" %>
+	<%= f.text_field("name") %>&nbsp;&nbsp;<small>(<%=t 'babyname.example_old' %>)</small>
+</div>

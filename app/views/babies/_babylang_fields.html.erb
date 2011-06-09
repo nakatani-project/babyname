@@ -1,0 +1,53 @@
+<!-- the file name has to be _babylang_fields -->
+
+<div class="fields">
+<table width="90%" bgcolor="#F0F0FF" style="border:2px #ffffff solid">
+	<tr><td>
+    
+	<b><%= f.label :lang_id, "#{t 'babyname.language'}:" %></b> 	
+	<%= f.select(:lang_id, Language.all.collect {|p| [ p.name, p.id ] }.sort, {:include_blank => "#{t 'babyname.select'}"}) %>
+	<%= link_to_remove_fields "#{t 'babyname.remove'}", f %>
+
+	<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<%= f.label :gender, "#{t :gender}" %>
+	<%= f.radio_button :gender, "Boy" %> <%=t :boy %> &nbsp&nbsp
+	<%= f.radio_button :gender, "Girl" %> <%=t :girl %> &nbsp&nbsp
+	<%= f.radio_button :gender, "Unisex" %> <%=t :unisex %> <br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<%= f.label :pronun, "#{t 'babyname.pronun'}" %> <%= f.text_field :pronun %> <a href="http://dictionary.reference.com/help/luna/Spell_pron_key.html" target="_blank">[?]</a>
+	  
+	<% f.fields_for :meanings do |mean| %>
+		<%= render :partial=>'meaning_fields', :locals=>{:f => mean}  %>
+  	<% end %>
+    
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<%= link_to_add_fields "+ #{t 'babyname.add_meaning'}", f, :meanings %>
+	</p>
+	
+	<% f.fields_for :origins do |orig| %>
+		<%= render :partial=>'origin_fields', :locals=>{:f => orig}  %>
+  	<% end %>
+   
+	<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<%= link_to_add_fields "+ #{t 'babyname.add_origin'}", f, :origins %>
+	</p>
+	
+	<% f.fields_for :nicknames do |nick| %>
+		<%= render :partial=>'nickname_fields', :locals=>{:f => nick}  %>
+  	<% end %>
+    
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<%= link_to_add_fields "+ #{t 'babyname.add_nickname'}", f, :nicknames %>
+	</p>
+	
+	<% f.fields_for :shorts do |short| %>
+		<%= render :partial=>'short_fields', :locals=>{:f => short}  %>
+  	<% end %>
+
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<%= link_to_add_fields "+ #{t 'babyname.add_long'}", f, :shorts %>
+	</p>
+	</td></tr>
+</table>
+</div>

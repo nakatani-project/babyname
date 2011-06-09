@@ -1,0 +1,61 @@
+<p>
+	<center>
+	<p class="topbabytitle">
+	<%=t :top_1 %> <%= @num %><%=t :top_2 %>
+	</p>
+	
+<table class="indexbaby baby<%= @gender %>">
+  <tr>
+		<th width="20%"><%= t :name %></th>
+		<th width="15%"><%= t :gender %></th>
+		<th width="30%"><%= t :region %></th>
+    	<th width="35%"><%= t :language %></th>
+  </tr>
+
+<!-- sort baby names entries alphabetically based on the baby names -->
+<!-- sorted_babynames = @babynames.sort {|a,b| a.name <=> b.name} -->
+
+
+<% @babies.each do |babyname|  %>
+  <tr>
+    <td align="left"><%= link_to (babyname.name, :controller => "babies", :action => "show", :id => babyname.id) %></td>
+	
+	<td align="center">
+		<% if babyname.gender == 'Boy' %>
+			<%= image_tag("boy_small.png", :width=>"15", :height=>"15") %><small><%=t :boy %></small>
+		<% elsif babyname.gender == 'Girl' %>
+			<%= image_tag("girl_small.png", :width=>"15", :height=>"15") %><small><%=t :girl %></small>
+		<% else %>
+			<%= image_tag("unisex_small.png", :width=>"20", :height=>"20") %><small><%=t :both %></small>
+		<% end %>
+	</td>
+	<td align="left">
+			<% babyname.babyregions.each do |region| %>
+					<% fname = Region.find(region.region_id).filename %>
+					<%= link_to image_tag("flags/"+fname+".png", :width=>"16", :height=>"11", :title => Region.find(region.region_id).name), :controller => "babies", :action => "index", :reg_id => region.region_id %>
+			<% end %>
+	</td>
+	<td>
+		<% oversize = false%>
+		<% blangsize = 0  %>
+		<% babyname.babylangs.each do |lang| %>
+				<% if blangsize < 3 %>
+					<%= link_to Language.find(lang.lang_id).name,  :controller => "babies", :action => "index", :lang_id => lang.lang_id %>
+				    <% blangsize = blangsize + 1%>
+				<% else %>
+					<% oversize = true %>
+					<% break; %>
+				<% end %>
+		<% end %>
+		<% if oversize %>
+				 etc.
+		<% end %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+	<%= will_paginate @babies %>
+	</center>
+</p>
+<center><%= render 'layouts/babyregister' %></center>

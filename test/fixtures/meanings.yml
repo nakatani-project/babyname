@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  baby_id: 1
+  character: MyString
+  meaning: MyString
+
+two:
+  baby_id: 1
+  character: MyString
+  meaning: MyString

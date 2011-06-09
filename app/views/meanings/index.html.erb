@@ -1,0 +1,27 @@
+<h1>Listing meanings</h1>
+
+<table>
+  <tr>
+    <th>Baby</th>
+    <th>Character</th>
+    <th>Meaning</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @meanings.each do |meaning| %>
+  <tr>
+    <td><%= meaning.baby_id %></td>
+    <td><%= meaning.character %></td>
+    <td><%= meaning.meaning %></td>
+    <td><%= link_to 'Show', meaning %></td>
+    <td><%= link_to 'Edit', edit_meaning_path(meaning) %></td>
+    <td><%= link_to 'Destroy', meaning, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Meaning', new_meaning_path %>

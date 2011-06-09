@@ -1,0 +1,191 @@
+.container {
+	width: 710px;
+}
+
+body {
+	background: #F0F0FF;
+}
+
+header {
+	padding-top: 20px;
+}
+
+header img {
+	/** padding: 1em; */
+	background: #fff;
+}
+
+section {
+	margin-top: 1em;
+	font-size: 120%;
+	padding: 20px;
+	background: #fff;
+}
+
+section h1 {
+	font-size: 200%;
+}
+
+/* Links */
+
+a {
+	color: #09c;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #069;
+	text-decoration: underline;
+}
+
+a:visited {
+	color: #069;
+}
+
+/* Navigation */
+nav {
+	float: right;
+}
+
+nav {
+	background-color: white;
+	padding: 0 0.7em;
+	white-space: nowrap;
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+}
+
+nav ul li {
+	list-style-type: none;
+	display: inline-block;
+	padding: 0.2em 0;
+}
+
+nav ul li a{
+	padding: 0 5px;
+	font-weight: bold;
+}
+
+nav ul li a:visited {
+	color: #09c;
+}
+
+nav ul li a:hover {
+	text-decoration: underline;
+}
+
+/* Sign up button */
+a.signup_button {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	text-align: center;
+	width: 190px;
+	color: #fff;
+	background: #006400;
+	font-size: 150%;
+	font-weight: bold;
+	padding: 20px;
+}
+
+.round {
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+/* Footer */
+
+footer {
+	text-align: center;
+	margin-top: 10px;
+	width: 710px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+footer nav {
+	float: none;	
+}
+
+
+/**** paragraphs and tables */
+p.home_title
+{
+	font-size:xx-large;
+	font-family:"Comic Sans MS";
+	font-style:normal;
+	margin-bottom: 0px;
+	color:#555555;
+}
+
+table.indexbaby
+{
+  font-size: small;
+	width:100%;
+}
+
+table.indexbaby td
+{
+	padding: 1px 5px 1px 5px; /* top right bottom left */
+}
+
+table.indexbaby th
+{
+	padding: 5px 5px 5px 5px; /* top right bottom left */
+}
+
+table.babyboy th
+{
+	background-color:#D1E2EF;
+}
+table.babyboy tr:nth-child(odd)
+{
+	background-color:#F0F0FF;
+}
+
+table.babygirl th
+{
+	background-color: #FFE4E1;
+}
+table.babygirl tr:nth-child(odd)
+{
+	background-color: #FFF0F5; 
+}
+
+table.babyunisex th
+{
+	background-color: #FFFfbb; /*#FBEC5D;#FFFF7E; */
+}
+table.babyunisex tr:nth-child(odd)
+{
+	background-color: #FFFFee; /* #FFFFAA;*/
+}
+table.babyother th
+{
+	background-color: #EFCDF8; /*#FBEC5D;#FFFF7E; */
+}
+table.babyother tr:nth-child(odd)
+{
+	background-color: #F8E9FC; /* #FFFFAA;*/
+}
+
+/**** show page table **/
+table.boy th
+{
+	background-color:#D1E2EF;
+}
+
+
+table.girl th
+{
+	background-color: #FFE4E1;
+}
+
+table.unisex th
+{
+	background-color: #FFFfbb; /*#FBEC5D;#FFFF7E; */
+}

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Baby:</b>
+  <%= @celeb.baby_id %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @celeb.last_name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @celeb.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_celeb_path(@celeb) %> |
+<%= link_to 'Back', celebs_path %>

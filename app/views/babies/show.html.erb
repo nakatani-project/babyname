@@ -1,0 +1,223 @@
+<table class="baby <%= @gender %>">
+  <tr>
+		<th width="40%"></th>
+		<th width="30%"></th>
+		<th width="30%"></th>
+  </tr>
+
+<tr>
+	<th colspan = "3"><center><h1><font face="Comic Sans MS"><%=h @baby.name %></font></h1></center></th>
+</tr>
+<tr>
+	<td colspan="3"></td>
+</tr>
+<tr>
+	<th><%=t 'babyname.region' %>:</th>
+	<% bregions = []%>
+	<td colspan="2">
+		<% for region in @baby.babyregions %>
+			<%= Region.find(region.region_id).name %>
+			<% if !Region.find(region.region_id).filename.nil? %>
+				<% fname = Region.find(region.region_id).filename %>
+				<%= link_to image_tag("flags/"+fname+".png", :width=>"16", :height=>"11", :title => Region.find(region.region_id).name), :controller => "babies", :action => "index", :reg_id => region.region_id %>
+			<% end %>
+			&nbsp;
+			<!-- bregions = bregions << Region.find(:first, :conditions => ['id = ?', region.region_id]) -->
+		<% end %>
+		<!-- bregions.map(&:name).join(', ') -->
+	</td>
+
+</tr>
+<tr>
+	<td colspan="3"></td>
+</tr>
+<% for lang in @baby.babylangs %>
+<tr>
+	<th><%=t 'babyname.language' %>:</th>
+	<td colspan="2">
+		 <b><%= Language.find(:first, :conditions => ['id = ?', lang.lang_id]).name %></b>
+		 &nbsp;&nbsp;&nbsp;
+		 <% if lang.gender=="Girl" %>
+			<%= image_tag("girl_small.png", :width=>"20", :height=>"20") %><small>Girl</small>
+		<% end %>
+		<% if lang.gender=="Boy" %>
+			<%= image_tag("boy_small.png", :width=>"20", :height=>"20") %><small>Boy</small>
+		<% end %>
+		<% if lang.gender=="Unisex" %>
+			<%= image_tag("unisex_small.png", :width=>"25", :height=>"25") %><small>Unisex</small>
+		<% end %>
+	</td>	
+</tr>
+
+<% if !lang.pronun.blank? %>
+<tr>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=t 'babyname.pronun' %>:</td>
+	<td colspan="2">[<%=h lang.pronun %>] <a href="http://dictionary.reference.com/help/luna/Spell_pron_key.html" target="_blank">[?]</a></td>
+			
+</tr>
+<% end %>
+
+<% if lang.meanings.size > 0 and lang.meanings.map(&:meaning).join('') != "" %>
+	<tr>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=t 'babyname.meaning' %>: </td>
+		<td colspan="2"><% counter = 0 %>
+			<!-- meaning_str.gsub(/, , /, ', '); -->
+			<% for mean in lang.meanings %>
+				<% if mean.meaning != "" %>
+					<%=h mean.meaning %>
+					<% if counter < lang.meanings.size-1 %>
+						,
+					<% end %>
+				<% end %>
+				<% counter = counter + 1 %>
+			<% end %>
+		</td>
+	</tr>
+<% end %>
+<% if lang.meanings.size > 0 and lang.meanings.map(&:character).join('') != ""%>
+	<tr>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=t 'babyname.rep' %>: </td>
+		<td colspan="2"><% counter = 0 %>
+			<% for mean in lang.meanings %>
+				<% if mean.character != "" %>
+					<%=h mean.character %>
+					<% if mean.meaning != "" %>
+						<small>(<%= mean.meaning %>)</small>
+					<% end %>
+					<% if counter < lang.meanings.size-1 %>
+						,
+					<% end %>
+				<% end %>
+				<% counter = counter + 1 %>
+			<% end %>
+		</td>
+	</tr>
+<% end %>
+
+<% if lang.origins.size > 0 %>
+	<% for orig in lang.origins %>
+	<tr>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=t 'babyname.orig_old' %>:</td>
+		<td colspan="2">
+			<% if !Originlang.find(:first, :conditions => ['id = ?', orig.originlang_id]).nil? %>
+				<%=h Originlang.find(:first, :conditions => ['id = ?', orig.originlang_id]).name %>
+			<% end %>
+			<% if !orig.name.empty? %>
+				(<%=h orig.name %>)
+			<% end %>
+		</td>
+	</tr>
+	<% end %>
+<% end %>
+<% if lang.shorts.size > 0 %>
+<tr>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=t 'babyname.short_of' %>:</td>
+	<td colspan="2">
+		<% counter = 0 %>
+		<% for s in lang.shorts %>
+			<% if Baby.find(:first, :conditions => ['name = ?', s.name]) %>
+				<% found = Baby.find(:first, :conditions => ['name = ?', s.name]).id %>
+				<%= link_to(s.name, :controller => "babynames", :action => "show", :id => found) %>
+			<% else %>
+				<%=h s.name %>
+			<% end %>
+			<% if counter < lang.shorts.size - 1 %>
+			,
+			<% end %>
+			<% counter = counter + 1 %>
+		<% end %>
+	</td>
+</tr>	
+<% end %>	
+<% if lang.nicknames.size > 0 %>
+	<tr>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=t 'babyname.nickname' %>:</td>
+		<td colspan="2">
+				<%= lang.nicknames.map(&:name).join(', ') %>
+		</td>
+	</tr>		 
+<% end %>
+<% end %> <!-- end of lang -->
+
+<tr>
+	<td colspan="3"></td>
+</tr>
+<tr>
+	<th colspan="3" >
+		<% if @baby.celebs.size > 0 %>	
+			<%=t 'babyname.celeb_1' %>
+			<% if @baby.celebs.size == 1 %>
+						<%=t 'babyname.celeb_2' %>
+			<% else %> 
+						<%=t 'babyname.celeb_3' %>
+			<% end %>
+				 <%=t 'babyname.celeb_4' %>:
+				
+		<% else %>
+			<%=t 'babyname.no_celeb_1' %><%= @baby.name %><%=t 'babyname.no_celeb_2' %> 
+	</th>	
+</tr>
+<% end %>
+<% for c in @baby.celebs %>
+<tr>
+	<td colspan="3">
+		<%=h @baby.name %> <%=h c.last_name %><br>
+		<small><%= (c.description).gsub("\n","<br/>")%></small>
+	</td>	
+</tr>
+<% end %>
+<tr>
+	<td colspan="3"></td>
+</tr>
+<tr class = "important">
+	<th colspan="3" >
+		<% if @baby.materials.size > 0 %>	
+			<%=t 'babyname.material_1' %><%=h @baby.name %><%=t 'babyname.material_2' %>:
+		<% else %>
+			<%=t 'babyname.no_material_1' %><%=h @baby.name %><%=t 'babyname.no_material_2' %>
+	</th>	
+</tr>
+<% end %>
+<% for c in @baby.materials %>
+<tr>	
+	<td colspan = "3">
+		<%=h c.title %><br>
+		<small><%= (c.description).gsub("\n","<br />") %></small>
+	</td>
+</tr>	
+<% end %>
+<tr>
+	<td colspan="3"></td>
+</tr>
+
+<% if @baby.relateds.size > 0 %>
+<tr>
+	<th><%=t 'babyname.similar' %>:</th>	
+	<td colspan="2">
+		<% counter = 0 %>
+		<% for r in @baby.relateds %>
+			<% if Baby.find(:first, :conditions => ['name = ?', r.name]) %>
+				<% found = Baby.find(:first, :conditions => ['name = ?', r.name]).id %>
+				<%= link_to(r.name, :controller => "babies", :action => "show", :id => found) %>
+			<% else %>
+				<%=h r.name %>
+			<% end %>
+			<% if counter < @baby.relateds.size - 1 %>
+			,
+			<% end %>
+			<% counter = counter + 1 %>
+		<% end %>
+	</td>	
+</tr>
+<% else %>
+<tr>
+	<th colspan = "3"><%=t 'babyname.no_similar' %></th>	
+</tr>
+<% end %>
+</table>
+
+
+	<%= link_to "#{t 'babyname.edit_info'}", edit_baby_path(@baby) %>	
+
+<br />
+<br />

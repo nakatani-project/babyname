@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  baby_id: 1
+  region_id: 1
+
+two:
+  baby_id: 1
+  region_id: 1

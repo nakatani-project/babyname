@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Baby:</b>
+  <%= @origin.baby_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @origin.name %>
+</p>
+
+<p>
+  <b>Originlang:</b>
+  <%= @origin.originlang_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_origin_path(@origin) %> |
+<%= link_to 'Back', origins_path %>

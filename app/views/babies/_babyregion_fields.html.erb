@@ -1,0 +1,7 @@
+<div class="fields">
+  <p>  
+    <%= f.label :region_id, "#{t 'babyname.region'}" %>  
+    <%= f.select("region_id", Region.all.collect {|p| [ p.name, p.id ] }.sort, {:include_blank => "#{t 'babyname.select'}"}) %>
+    <%= link_to_remove_fields "remove", f %><br />    
+  </p> 
+</div>  

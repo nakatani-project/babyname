@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  baby_id: 1
+  name: MyString
+  originlang_id: 1
+
+two:
+  baby_id: 1
+  name: MyString
+  originlang_id: 1

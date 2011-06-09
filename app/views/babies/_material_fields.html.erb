@@ -1,0 +1,10 @@
+<!-- the file name has to be _material_fields -->
+<div class="fields">
+	<%= f.label :title, "#{t 'babyname.title'}:" %>
+	<%= f.text_field("title") %>
+	<%= link_to_remove_fields "#{t 'babyname.remove'}", f %>
+
+	<br />
+	<%= f.label :description, "#{t 'babyname.description'}:" %><br />
+	<%= f.text_area("description", :rows => 3) %>
+</div>

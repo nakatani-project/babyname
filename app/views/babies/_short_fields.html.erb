@@ -1,0 +1,11 @@
+<div class="fields">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<%= f.label :name, "#{t 'babyname.short_of'}:" %>
+	<%= f.text_field("name") %>&nbsp;&nbsp;
+	<%= link_to_remove_fields "#{t 'babyname.remove'}", f %>
+
+	<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<small>(<%=t 'babyname.example_short' %>)</small>
+	<br />
+</div>

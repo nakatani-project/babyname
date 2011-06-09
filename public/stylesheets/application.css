@@ -1,0 +1,396 @@
+body {
+		color : #555;
+		padding: 0 0 0 0;
+    margin: 0 0 0 0;
+		background: #ffffff;
+		font-family: "Verdana", "Osaka", "ＭＳ Ｐゴシック", sans-serif;
+		 /* 文字 */
+		line-height : 1.5;						/* 行間 */
+		font-size : 85%;		
+		voice-family : "\"}\"";					/* おまじない */
+		voice-family : inherit;					/* おまじない */
+		text-align: center;
+	}
+
+	textarea, input, select {
+		margin: 0px 0px 5px 5px;
+		padding: 1px;
+		font-size: 100%;
+		line-height: 1.5;
+		border: 1px solid #d1e2ef;
+		background-color: #fff;
+		color: #454545;
+	}
+	
+	textarea[disabled], input[disabled], select[disabled] {
+		/* border: 1px solid #999; */
+		color : #999;	 
+		background-color: #ddd;
+	}
+
+	/* 絵文字 */
+	.emoji{
+		vertical-align:middle;
+	}
+
+#top{
+  background-color: #ffffff;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+/* リンクの設定
+------------------------------------------------------------ */
+
+	/* リンクの設定 */
+	a {
+		text-decoration : none;				
+	}
+
+	a:link {
+		color : #36abce;	
+	}
+  #navigation   a:link {
+    color : #ffffff;  
+  }
+	a:visited {
+		color : #36abce;
+	}
+	#navigation   a:visited {
+    color : #ffffff;  
+  }
+	
+	a:hover {
+		color : #36abce;		
+		text-decoration: underline;
+	}
+
+	/* active link */
+	a:active {
+		color : #36abce;
+		text-decoration: underline;
+	}
+
+	/* no border for image link */
+	a img {
+		border-style : none;		
+		border-width : 0px;						
+		text-decoration : none;			
+	}
+
+/* ---------------------------------------------------
+border setting for images
+when there is a link to the image, it shows border
+--------------------------------------------------- */
+
+.entry_body img { margin: 1px; border: 1px solid #e2e2e2;}
+.entry_body a:hover img, .entry_body a:active img {
+  margin: 1px;  border: 1px solid #61bee0;
+  text-decoration: none;
+}
+
+
+
+p.search_title{
+	font-size:medium;
+	font-weight:bold;
+}
+
+p.blocktext {
+	/* text-indent: 0%;*/
+	margin: 15px, 0px, 15px, 0px;
+	text-align: left; 
+	margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+	/*  */
+}
+
+.required_select select{
+	font-weight:bold;
+	/*color:#ffffff; */
+	
+	background-repeat:repeat-x;
+	background-color:#F9B7FF; /* plum */
+}
+
+.required_text input{
+	font-weight:bold;
+	/*color:#ffffff; */
+	
+	background-repeat:repeat-x;
+	background-color:#F9B7FF; /* plum */
+}
+
+p.requiredwarning {
+	font-weight:bold;
+	color:#FE2E9A;
+}
+
+hr.category {
+  border: 1;
+  width: 95%;
+  border-style: dotted;
+  color: #fffee;
+  margin: 10px;
+}
+
+p.shortblock {
+	/* text-indent: 0%;*/
+	margin: 10px;
+	text-align: left; 
+	margin-left: auto;
+    margin-right: auto;
+    width: 30em;
+	/*  */
+}
+p.sessionblock{
+	margin: 10px;
+	text-align: left; 
+	margin-left: auto;
+    margin-right: auto;
+    width: 15em;
+}
+p.bk{
+	padding: 10px 10px 10px 10px;
+	background-color:#D5E5ED;
+}
+p.bk_2{
+	padding: 10px 10px 10px 10px;
+	background-color:#FFE4E1;
+}
+p.combk{
+	padding: 10px 10px 10px 10px;
+	margin: 0px 4px 4px 0px; /* top, right, bottom, left */
+	background-color:#F0F0FF; /* #D5E5ED; */
+}
+p.dotted {
+	border-style: dotted;
+	border-color: #aaa;
+}
+
+
+td.title
+{
+	font-size:large;
+	text-align:left;
+}
+
+table.entercomment{
+	width:600px;
+}
+table.title{
+	width:600px;
+	text-align:left;
+}
+table.title th
+{
+	padding: 25px 0px 10px 0px;
+}
+
+/* comment */
+table.com
+{
+	width: 70%;
+	text-align:left;
+}
+
+table.com th
+{
+	font-weight:bolder;
+	font-size: larger;
+}
+
+table.title th
+{
+	font-size:large;
+	text-align:left;
+	font-weight:bolder;
+}
+
+hr.com
+{
+	border:solid;
+	margin : 20px 20px 0px px;
+	border-color:#ffffff;
+}
+
+table.left_column
+{
+  padding: 10px, 5px, 5px, 10px;
+}
+
+/* show each babyname */
+table.baby
+{
+	width:95%;
+	/*background-color:#F0F0FF;*/
+	padding : 10px 5px 5px 10px; 	
+}
+table.baby td
+{
+	padding: 2px 1px 1px 10px; /* top right bottom left */
+}
+
+tr.important
+{
+	padding 5px 1px 1px 5px;
+}
+
+table.baby th
+{
+	font-weight:bold;
+	text-align:left;
+	padding: 5px 20px 5px 20px; /* top right bottom left */
+	width:30%;
+}
+
+
+
+table.ranking
+{
+	width:55%;
+}
+
+
+table.ranking td
+{
+	padding: 1px 5px 1px 5px;
+	text-align:center;
+}
+
+table.s_results td
+{
+	padding: 0px 10px 0px 10px;
+	font:"Courier New";
+}
+
+
+
+
+p.home_title
+{
+	font-size:xx-large;
+	font-family:"Comic Sans MS";
+	font-style:normal;
+	margin-bottom: 0px;
+	color:#555555;
+}
+p.topbabytitle
+{
+	font-weight:bold;
+	padding: 20px 0px 0px 0px;
+	text-decoration:underline;
+}
+
+/* liquid layout */
+#container{
+  background-color:#F0F0FF; /* container background */
+  overflow:hidden;
+  margin:0 0px; /* bigger the margin, smaller the container. used to be 0 0px */
+  padding-right:250px; /* The width of the rail */
+}
+* html #container{
+  height:1%; /* So IE plays nice */
+}
+#content{
+  background-color:#F0F0FF; /* big column background  */
+  width:100%;
+  border-right:250px solid #FFF0F5; /* white space in the small column */
+  margin-right:-250px;
+  float:left;
+}
+#rail{
+  background-color:#FFF0F5; /* small column background */
+  width:250px;
+  float:left;
+  margin-right:-250px;
+}
+
+
+/* 強調の設定
+------------------------------------------------------------ */
+
+	/* 強調 */
+
+	em {
+		font-style : normal;
+		border-bottom: 1px solid #e93b55;
+		/* 下線を引く */
+	}
+
+	/* より強い強調 */
+
+	strong {
+		font-weight : bold;
+	}
+
+/* list style */
+
+	ul, ol, li, dl, dt, dd {
+		list-style: none;
+	}
+  blockquote {
+		width : auto;						
+		margin : 10px;		
+		padding : 0.5em 1em;			
+		border : 3px double #e2e2e2;		
+		/* background: url(http://templates.blog.fc2.com/template/fragment_of_summer/fsummer-line.gif);*/
+	}
+	
+* { padding: 0; margin: 0; }
+#wrapper { 
+ margin: 0 auto;
+ width: 922px;
+}
+#faux {
+ background: url(../images/faux.gif);
+ margin-bottom: 5px;
+ overflow: auto; /* Paul O Brien Fix for IE www.pmob.co.uk */
+ width: 100%
+}
+#header {
+ color: #333;
+ width: 902px;
+ padding: 10px;
+ height: 70px;
+ margin: 10px 0px 5px 0px;
+ background: #F0F0FF;
+}
+#navigation {
+ color: #fff;
+ padding: 5px;
+ margin: 0px 0px 5px 0px;
+ background: #737CA1;
+}
+#leftcolumn { 
+ display: inline;
+ /* color: #333; */
+ margin: 10px;
+ padding: 0px;
+ width: 195px;
+ float: left;
+}
+#rightcolumn { 
+ float: right;
+ /* color: #333; */
+ margin: 10px;
+ padding: 0px;
+ width: 683px;
+ display: inline;
+ position: relative;
+}
+#footer { 
+ font-size:small;
+ font-style:normal;
+ font-family:Verdana, Arial;
+ width: 902px;
+ clear: both;
+ color: #333;
+ background: #737CA1;
+ margin: 0px 0px 10px 0px;
+ padding: 10px;
+}
+
+
+.clear { clear: both; background: none; }

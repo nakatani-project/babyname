@@ -1,0 +1,2 @@
+module BabylangsHelper
+end

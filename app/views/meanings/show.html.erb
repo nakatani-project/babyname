@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Baby:</b>
+  <%= @meaning.baby_id %>
+</p>
+
+<p>
+  <b>Character:</b>
+  <%= @meaning.character %>
+</p>
+
+<p>
+  <b>Meaning:</b>
+  <%= @meaning.meaning %>
+</p>
+
+
+<%= link_to 'Edit', edit_meaning_path(@meaning) %> |
+<%= link_to 'Back', meanings_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  baby_id: 1
+  lang_id: 1
+  pronun: MyString
+  gender: MyString
+
+two:
+  baby_id: 1
+  lang_id: 1
+  pronun: MyString
+  gender: MyString

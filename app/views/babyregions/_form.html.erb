@@ -1,0 +1,25 @@
+<%= form_for(@babyregion) do |f| %>
+  <% if @babyregion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@babyregion.errors.count, "error") %> prohibited this babyregion from being saved:</h2>
+
+      <ul>
+      <% @babyregion.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :baby_id %><br />
+    <%= f.text_field :baby_id %>
+  </div>
+  <div class="field">
+    <%= f.label :region_id %><br />
+    <%= f.text_field :region_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

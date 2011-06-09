@@ -1,0 +1,12 @@
+<br>
+<h3>Welcome to Mixed Baby Name</h3>
+<p>
+  + <%=t :top_title %><br>
+  &nbsp;&nbsp;&nbsp;+ <%= link_to "#{t :top_boy}",  :controller => "babies", :action => "index", :gender => 'boy' %><br>
+  &nbsp;&nbsp;&nbsp;+ <%= link_to "#{t :top_girl}",  :controller => "babies", :action => "index", :gender => 'girl' %><br>
+  &nbsp;&nbsp;&nbsp;+ <%= link_to "#{t :top_unisex}",  :controller => "babies", :action => "index", :gender => 'unisex' %><br>
+</p>
+<p>
+	<a href="<%= t :twitter_url %>" target="_blank"><img src="http://twitter-badges.s3.amazonaws.com/follow_bird-a.png" alt="Follow ainakatani on Twitter"/></a>
+</p>
+<center><%= render 'layouts/babyregister' %></center>

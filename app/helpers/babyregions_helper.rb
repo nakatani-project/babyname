@@ -1,0 +1,2 @@
+module BabyregionsHelper
+end

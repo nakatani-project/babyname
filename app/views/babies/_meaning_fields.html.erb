@@ -1,0 +1,15 @@
+
+<div class="fields">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<%= f.label :meaning, "#{t 'babyname.meaning'}:" %>
+	<%= f.text_field("meaning") %>
+	<%= link_to_remove_fields "#{t 'babyname.remove'}", f %>
+	<br />
+	
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<%= f.label :character, "#{t 'babyname.rep'}: " %>
+	<%= f.text_field("character") %>
+	&nbsp;&nbsp;<small>(<%=t 'babyname.exampe_rep' %>)</small><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	(<%=t 'babyname.rep_message' %>)
+</div>

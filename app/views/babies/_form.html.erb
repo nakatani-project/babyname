@@ -1,0 +1,75 @@
+<font color="red">
+	<% if @baby.errors.any? %>
+    <div id="error_explanation">
+      <%= pluralize(@baby.errors.count, "error") %> prohibited this baby name from being saved:
+
+      <ul>
+      <% @baby.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+</font>
+
+<% form_for(@baby) do |f| %>
+
+  <p><%=t 'babyname.instruction' %></p>
+  <hr>
+  
+  <p>
+  	<b><%= f.label :name, "#{t 'babyname.name'}" %></b> <%=t 'babyname.english_rep' %>:
+    <%= f.text_field("name") %>&nbsp;&nbsp;
+  </p>
+  <hr>
+  <% f.fields_for :babyregions do |builder| %>  
+	    <%= render 'babyregion_fields', :f => builder %>  
+  <% end %> 
+  <!-- calling a application_helper method -->
+  <p><%= link_to_add_fields "+ #{t 'babyname.add_region'}", f, :babyregions %></p> 
+	 
+  <hr>
+  <% f.fields_for :babylangs do |lang_n| %>
+		<%= render :partial=>'babylang_fields', :locals=>{:f => lang_n} %>
+  <% end %>
+  <p><%= link_to_add_fields "+ #{t 'babyname.add_lang'}", f, :babylangs %></p>
+
+   <hr>
+   <p><b><%=t 'babyname.famous' %></b></p>
+		<p>
+		<% f.fields_for :celebes do |celeb| %>
+    		<%= render :partial=>'celeb_fields', :locals=>{:f => celeb} %>
+  		<% end %>
+		</p>
+    <p><%= link_to_add_fields "+ #{t 'babyname.add_famous'}", f, :celebs %></p>
+	
+   <hr>
+    <p><b><%=t 'babyname.material'%></b><br /><small>(<%=t 'babyname.example_material' %>)</small></p>
+	<p>
+		<% f.fields_for :materials do |material| %>
+    		<%= render :partial=> 'material_fields', :locals => {:f => material}  %>
+  		<% end %>
+	</p>
+	
+	<!-- calling a helper method -->
+    <p>
+    	<%= link_to_add_fields "+ #{t 'babyname.add_material'}", f, :materials %>
+	</p>
+ 
+    <hr>
+ 
+ 	<p class><b><%=t 'babyname.similar' %></b></p>
+ 	<p>
+		<% f.fields_for :relateds do |related| %>
+    		<%= render :partial => 'related_fields', :locals => {:f => related}%>
+  		<% end %>
+	</p>
+	 <p>
+	 	<%= link_to_add_fields "+ #{t 'babyname.add_similar'}", f, :relateds %>
+	 </p>
+
+  <hr> 
+  <p>
+    <center><%= f.submit "#{t :submit}" %></center>
+  </p>
+<% end %>
