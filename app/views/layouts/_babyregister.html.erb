@@ -1,5 +1,5 @@
 <br>
 <p><u><%=t :anyone %></u><%=t :add_message %><br>
 
-	<%= link_to t'add_message_2', new_baby_path %>
+	<%= link_to "#{t :add_message_2}", :controller => "babies", :action => "new" %>
 </p>
