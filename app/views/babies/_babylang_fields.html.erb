@@ -4,8 +4,8 @@
 <table width="90%" bgcolor="#F0F0FF" style="border:2px #ffffff solid">
 	<tr><td>
     
-	<b><%= f.label :lang_id, "#{t 'babyname.language'}:" %></b> 	
-	<%= f.select(:lang_id, Language.all.collect {|p| [ p.name, p.id ] }.sort, {:include_blank => "#{t 'babyname.select'}"}) %>
+	<b><%= f.label :language_id, "#{t 'babyname.language'}:" %></b> 	
+	<%= f.select(:language_id, Language.all.collect {|p| [ p.name, p.id ] }.sort, {:include_blank => "#{t 'babyname.select'}"}) %>
 	<%= link_to_remove_fields "#{t 'babyname.remove'}", f %>
 
 	<br />

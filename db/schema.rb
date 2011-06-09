@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20110607213128) do
 
   create_table "babylangs", :force => true do |t|
     t.integer  "baby_id"
-    t.integer  "lang_id"
+    t.integer  "language_id"
     t.string   "pronun"
     t.string   "gender"
     t.datetime "created_at"

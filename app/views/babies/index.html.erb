@@ -38,9 +38,9 @@
 	<td>
 		<% oversize = false%>
 		<% blangsize = 0  %>
-		<% babyname.babylangs.each do |lang| %>
+		<% babyname.languages.each do |lang| %>
 				<% if blangsize < 3 %>
-					<%= link_to Language.find(lang.lang_id).name,  :controller => "babies", :action => "index", :lang_id => lang.lang_id %>
+					<%= link_to lang.name,  :controller => "babies", :action => "index", :lang_id => lang.id %>
 				    <% blangsize = blangsize + 1%>
 				<% else %>
 					<% oversize = true %>

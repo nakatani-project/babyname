@@ -9,4 +9,5 @@ class Region < ActiveRecord::Base
    #has_and_belongs_to_many :babynames #, :dependent => :destroy
    has_many :ranks, :dependent => :destroy
    has_many :babyregions, :dependent => :destroy
+   has_many :babies, :through => :babyregions
 end

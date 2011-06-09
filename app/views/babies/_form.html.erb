@@ -37,7 +37,7 @@
    <hr>
    <p><b><%=t 'babyname.famous' %></b></p>
 		<p>
-		<% f.fields_for :celebes do |celeb| %>
+		<% f.fields_for :celebs do |celeb| %>
     		<%= render :partial=>'celeb_fields', :locals=>{:f => celeb} %>
   		<% end %>
 		</p>

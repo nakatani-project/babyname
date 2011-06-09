@@ -8,6 +8,12 @@ class BabiesController < ApplicationController
     @gender = params[:gender]
     if @gender != nil
     	@babies = Baby.where("gender = ?", @gender.capitalize).paginate(:per_page => 10, :page => params[:page])
+    elsif !params[:reg_id].nil?
+    	@gender = "other"
+    	@babies = Region.find(params[:reg_id]).babies.paginate(:per_page => 10, :page => params[:page])
+    elsif !params[:lang_id].nil?
+    	@gender = "other"
+    	@babies = Language.find(params[:lang_id]).babies.paginate(:per_page => 10, :page => params[:page])
     else
     	@gender = "other"
   		@babies = Baby.search(params[:search]).paginate(:per_page => 10, :page => params[:page])
@@ -37,7 +43,7 @@ class BabiesController < ApplicationController
     @baby.babyregions.build
     #Making the 'Unisex' default.
     #When adding another language, application_helper will have to do the same job
-    lang = @baby.babylangs.build(:gender => 'Unisex')
+    @baby.babylangs.build(:gender => 'Unisex')
     
     @back = request.env["HTTP_REFERER"]
     respond_to do |format|
