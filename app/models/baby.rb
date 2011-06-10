@@ -30,7 +30,7 @@ class Baby < ActiveRecord::Base
 	  
   def self.search(search)  
     if search  
-      where('name LIKE ?', "%#{search}%")  #rails3 previously find(:all, :condition =>....
+      where('lower(name) LIKE ?', "%#{search}%")  #rails3 previously find(:all, :condition =>....
     else  
       scoped  #rails 3 previously find(:all)
     end  
