@@ -61,7 +61,8 @@ class BabiesController < ApplicationController
   # POST /babies.xml
   def create
     @baby = Baby.new(params[:baby])
-
+    # TODO : Fix gender assignment
+	@baby.gender = "Unisex" 
     respond_to do |format|
       if @baby.save
         format.html { redirect_to(@baby, :notice => 'Baby was successfully created.') }

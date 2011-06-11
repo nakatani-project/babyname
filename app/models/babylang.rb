@@ -2,7 +2,7 @@ class Babylang < ActiveRecord::Base
   belongs_to :baby
   belongs_to :language
   
-  before_validation :clean_up_whitespace
+  # before_validation :clean_up_whitespace
 
   def clean_up_whitespace
     self.pronun.strip!    # this does the strip in place
@@ -40,7 +40,7 @@ class Babylang < ActiveRecord::Base
   	str = ""
   	counter = 0
   	for orig in self.origins
-  		if !Originlang.find(orig.originlang_id).nil?
+  		if !orig.originlang_id.nil? and !Originlang.find(orig.originlang_id).nil?
 			str += Originlang.find(orig.originlang_id).name
 		end
 		if !orig.name.empty?

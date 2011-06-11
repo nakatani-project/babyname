@@ -1,7 +1,7 @@
 class CreateNicknames < ActiveRecord::Migration
   def self.up
     create_table :nicknames do |t|
-      t.integer :baby_id
+      t.integer :babylang_id
       t.string :name
 
       t.timestamps

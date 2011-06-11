@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20110607213128) do
   end
 
   create_table "meanings", :force => true do |t|
-    t.integer  "baby_id"
+    t.integer  "babylang_id"
     t.string   "character"
     t.string   "meaning"
     t.datetime "created_at"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20110607213128) do
   end
 
   create_table "nicknames", :force => true do |t|
-    t.integer  "baby_id"
+    t.integer  "babylang_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(:version => 20110607213128) do
   end
 
   create_table "origins", :force => true do |t|
-    t.integer  "baby_id"
+    t.integer  "babylang_id"
     t.string   "name"
     t.integer  "originlang_id"
     t.datetime "created_at"

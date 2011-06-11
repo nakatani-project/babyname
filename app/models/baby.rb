@@ -1,15 +1,55 @@
 class Baby < ActiveRecord::Base
 	
-	before_validation :clean_up_whitespace
+	# before_validation :clean_up_whitespace
 	def clean_up_whitespace
-    	self.name.strip!    # this does the strip in place
-    	#self.name.capitalize!
-  	end
-
+			if !self.name.nil?
+	    		self.name.strip!    # this does the strip in place
+	    	end
+	    	#self.name.capitalize!
+	end
+	
 	validate do |babyname|
-	    	babyname.errors[:base] << "Please provide a name" if babyname.name.blank?
-	    	babyname.errors[:base] << "Please select at least one region" if babyname.babyregions.empty?
-	    	babyname.errors[:base] << "Please select at least one language" if babyname.babylangs.empty?
+			puts "Validating"
+			if babyname.name.blank?
+				puts "Baby name was blank"
+				babyname.errors[:base] << "Please provide a name"	
+			end
+			if babyname.babyregions.empty?
+				puts "Baby regions was blank"
+				babyname.errors[:base] << "Please select at least one region"
+			end
+			if babyname.babylangs.empty?
+				puts "Baby langs was blank"
+				babyname.errors[:base] << "Please select at least one language"
+			else
+				# determine the gender
+				boycount = 0
+				girlcount = 0
+				unisexcount = 0
+				babyname.babylangs.each do |lang|
+					if lang.gender == 'Girl'
+						girlcount = girlcount + 1
+					elsif lang.gender == 'Boy'
+						boycount = boycount + 1
+					else
+						unisexcount = unisexcount + 1
+					end
+				end
+				if unisexcount > 0
+					babyname.gender = 'Unisex'
+				elsif girlcount > 0 and boycount > 0
+					babyname.gender = 'Unisex'
+				elsif girlcount > boycount
+					babyname.gender = 'Girl'
+				else
+					babyname.gender = 'Boy'
+				end
+				babyname.lang_count = babyname.babylangs.size
+			end
+	    	 
+	    	
+	    	# babyname.errors[:base] << "Please select at least one region" if babyname.babyregions.empty?
+	    	# babyname.errors[:base] << "Please select at least one language" if babyname.babylangs.empty?
 	end
 	  
 	  validates_uniqueness_of   :name, :case_sensitive => false, :message =>"already exists"
