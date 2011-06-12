@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20110607213128) do
   end
 
   create_table "materials", :force => true do |t|
-    t.string   "baby_id"
+    t.integer   "baby_id"
     t.string   "title"
     t.text     "description"
     t.datetime "created_at"
