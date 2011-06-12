@@ -12,8 +12,6 @@
 		<link rel="alternate" type="application/rss+xml" title="ROR" href="sitemap.xml" />
 		<title><%= @meta_title %><%=t :title %><%= @meta_subtitle %></title>
 		<%= render 'layouts/stylesheets' %>
-
-		<!-- "defaults" tells to inlude public/javascripts/application.js -->
 		<!-- javascript_include_tag :defaults, :cache => true --> 
 		<%= javascript_include_tag :defaults %> 
 		<%= csrf_meta_tag %>
