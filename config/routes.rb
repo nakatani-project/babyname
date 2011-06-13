@@ -1,5 +1,5 @@
 Babyname::Application.routes.draw do
-  get "pages/translate"
+  get "application/set_locale_and_redirect"
   root :to => "pages#home"
   resources :shorts
 
