@@ -3,20 +3,33 @@ class BabiesController < ApplicationController
   layout 'application' 
   # GET /babies
   # GET /babies.xml
-
+  
   def index
     @gender = params[:gender]
+    
+   	# search by gender
     if @gender != nil
-    	@babies = Baby.where("gender = ?", @gender.capitalize).paginate(:per_page => 10, :page => params[:page])
+    	@babies = Baby.where("gender = ?", @gender.capitalize).order("lang_count desc").paginate(:per_page => 10, :page => params[:page])
+    	
+    # search by region
     elsif !params[:reg_id].nil?
     	@gender = "other"
-    	@babies = Region.find(params[:reg_id]).babies.paginate(:per_page => 10, :page => params[:page])
+    	@babies = Region.find(params[:reg_id]).babies.order("lang_count desc").paginate(:per_page => 10, :page => params[:page])
+    
+    # search by language
     elsif !params[:lang_id].nil?
     	@gender = "other"
-    	@babies = Language.find(params[:lang_id]).babies.paginate(:per_page => 10, :page => params[:page])
-    else
+    	@babies = Language.find(params[:lang_id]).babies.order("lang_count desc").paginate(:per_page => 10, :page => params[:page])
+    
+    # search by keyword (name)
+    elsif !params[:search].nil?
     	@gender = "other"
-  		@babies = Baby.search(params[:search]).paginate(:per_page => 10, :page => params[:page])
+  		@babies = Baby.search(params[:search]).order("lang_count desc").paginate(:per_page => 10, :page => params[:page])
+  		
+  	# return all baby names
+  	else
+  		@gender = "other"
+  		@babies = Baby.order("lang_count desc").paginate(:per_page => 10, :page => params[:page])
 	end
 
     respond_to do |format|

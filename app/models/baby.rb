@@ -1,6 +1,8 @@
 class Baby < ActiveRecord::Base
 	
-	# before_validation :clean_up_whitespace
+	attr_accessor :baby_name #for autocomplete
+	
+	before_validation :clean_up_whitespace
 	def clean_up_whitespace
 			if !self.name.nil?
 	    		self.name.strip!    # this does the strip in place

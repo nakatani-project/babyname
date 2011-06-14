@@ -6,9 +6,9 @@
 	
 <table class="indexbaby baby<%= @gender %>">
   <tr>
-		<th width="20%"><%= t :name %></th>
+		<th width="15%"><%= t :name %></th>
 		<th width="15%"><%= t :gender %></th>
-		<th width="30%"><%= t :region %></th>
+		<th width="35%"><%= t :region %></th>
     	<th width="35%"><%= t :language %></th>
   </tr>
 
@@ -30,25 +30,19 @@
 		<% end %>
 	</td>
 	<td align="left">
-			<% babyname.babyregions.each do |region| %>
+			<% babyname.babyregions[0..9].each do |region| %>
 					<% fname = Region.find(region.region_id).filename %>
 					<%= link_to image_tag("flags/"+fname+".png", :width=>"16", :height=>"11", :title => Region.find(region.region_id).name), :controller => "babies", :action => "index", :reg_id => region.region_id %>
 			<% end %>
 	</td>
 	<td>
-		<% oversize = false%>
-		<% blangsize = 0  %>
-		<% babyname.languages.each do |lang| %>
-				<% if blangsize < 3 %>
-					<%= link_to lang.name,  :controller => "babies", :action => "index", :lang_id => lang.id %>
-				    <% blangsize = blangsize + 1%>
-				<% else %>
-					<% oversize = true %>
-					<% break; %>
-				<% end %>
+		<% babyname.languages[0..2].each do |lang| %>
+				
+			<%= link_to lang.name,  :controller => "babies", :action => "index", :lang_id => lang.id %>
+		
 		<% end %>
-		<% if oversize %>
-				 etc.
+		<% if babyname.languages.size > 3 %>
+			 etc.
 		<% end %>
 	</td>
   </tr>
