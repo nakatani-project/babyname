@@ -8,21 +8,25 @@ class BabiesController < ApplicationController
     @gender = params[:gender]
     
    	# search by gender
-    if @gender != nil
+    if !@gender.nil?
+    	@title = @gender.capitalize + " Names"
     	@babies = Baby.where("gender = ?", @gender.capitalize).order("lang_count desc").paginate(:per_page => 10, :page => params[:page])
     	
     # search by region
     elsif !params[:reg_id].nil?
+    	@title = Region.find(params[:reg_id]).name
     	@gender = "other"
     	@babies = Region.find(params[:reg_id]).babies.order("lang_count desc").paginate(:per_page => 10, :page => params[:page])
     
     # search by language
     elsif !params[:lang_id].nil?
+    	@title = Language.find(params[:lang_id]).name
     	@gender = "other"
     	@babies = Language.find(params[:lang_id]).babies.order("lang_count desc").paginate(:per_page => 10, :page => params[:page])
     
     # search by keyword (name)
     elsif !params[:search].nil?
+    	@title = "Search Results"
     	@gender = "other"
   		@babies = Baby.search(params[:search]).order("lang_count desc").paginate(:per_page => 10, :page => params[:page])
   		
@@ -43,6 +47,7 @@ class BabiesController < ApplicationController
   def show
     @baby = Baby.find(params[:id])
 	@gender = @baby.gender.downcase
+	@title = @baby.name
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @baby }
@@ -58,6 +63,7 @@ class BabiesController < ApplicationController
     #When adding another language, application_helper will have to do the same job
     @baby.babylangs.build(:gender => 'Unisex')
     
+    @title = "New"
     @back = request.env["HTTP_REFERER"]
     respond_to do |format|
       format.html # new.html.erb
@@ -68,6 +74,7 @@ class BabiesController < ApplicationController
   # GET /babies/1/edit
   def edit
     @baby = Baby.find(params[:id])
+    @title = "Edit"
   end
 
   # POST /babies
